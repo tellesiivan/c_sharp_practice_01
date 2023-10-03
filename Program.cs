@@ -1,7 +1,6 @@
-﻿using System.Data;
-using Dapper;
+﻿using System;
+using HelloWorld.Data;
 using HelloWorld.Models;
-using Microsoft.Data.SqlClient;
 
 namespace HelloWorld
 {
@@ -9,19 +8,19 @@ namespace HelloWorld
     {
         public static void Main(string[] args)
         {
-            string connectionString = "Server=localhost;Database=DotnetCourseDatabase;TrustServerCertificate=true;Trusted_Connection=false;User Id=sa;Password=SQLConnect1;";
-
-            IDbConnection dbConnection = new SqlConnection(connectionString);
+            DataContextDapper dapper = new();
+            DateTime rightNow = dapper.LoadDataSingle<DateTime>("SELECT GETDATE()");
+            Console.WriteLine(rightNow);
 
             Computer myComputer = new()
             {
-                Motherboard = "CAJKDH",
-                CPUCore = 212,
-                HasWifi = false,
-                Price = 21.32m,
-                HasLTE = false,
-                ReleaseDate = DateTime.Now,
-                VideoCard = "31-20ej"
+                Motherboard = "78934WE",
+                CPUCore = 211,
+                HasWifi = true,
+                Price = 4321.32m,
+                HasLTE = true,
+                ReleaseDate = DateTime.Now.AddDays(3),
+                VideoCard = "34sa-2sds"
             };
 
             string sqlCommand = @"INSERT INTO TutorialAppSchema.Computer (
@@ -41,8 +40,9 @@ namespace HelloWorld
                 + "' )";
 
 
-            // int result = dbConnection.Execute(sqlCommand);
-            // Console.WriteLine(result);
+            // int result = dapper.ExecuteSqlWithRowCount(sqlCommand);
+            bool result = dapper.ExecuteSql(sqlCommand);
+            Console.WriteLine("Did the query successfully update rows? ==> {0}", result);
 
             string sqlSelect = @"
             SELECT
@@ -54,7 +54,7 @@ namespace HelloWorld
                 Computer.VideoCard
                 FROM TutorialAppSchema.Computer";
 
-            IEnumerable<Computer> computers = dbConnection.Query<Computer>(sqlSelect);
+            IEnumerable<Computer> computers = dapper.LoadData<Computer>(sqlSelect);
 
             foreach (Computer computer in computers)
             {
