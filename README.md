@@ -1,1 +1,2 @@
-# c_sharp_practice_01
+# c# Practice 01
+A series of small repos that illustrates my c sharp learning
