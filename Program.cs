@@ -1,6 +1,7 @@
 ﻿using System;
 using HelloWorld.Data;
 using HelloWorld.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace HelloWorld
 {
@@ -8,20 +9,29 @@ namespace HelloWorld
     {
         public static void Main(string[] args)
         {
-            DataContextDapper dapper = new();
-            DateTime rightNow = dapper.LoadDataSingle<DateTime>("SELECT GETDATE()");
-            Console.WriteLine(rightNow);
+            IConfiguration configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            DataContextDapper dapper = new(configuration);
+            DataContextEF EntityFW = new(configuration);
 
             Computer myComputer = new()
             {
-                Motherboard = "78934WE",
-                CPUCore = 211,
-                HasWifi = true,
-                Price = 4321.32m,
+                Motherboard = "dppr",
+                CPUCores = 54,
+                HasWifi = false,
+                Price = 543.32m,
                 HasLTE = true,
                 ReleaseDate = DateTime.Now.AddDays(3),
-                VideoCard = "34sa-2sds"
+                VideoCard = "fdwl-2sds"
             };
+
+            // Entity framework -> Will execute the same as the sqlCommand below and dapper.ExecuteSql(sqlCommand);
+            // EntityFW.Add(myComputer);
+            // EntityFW.SaveChanges();
+
+            // IEnumerable<Computer>? computersEF = EntityFW.Computer?.ToList<Computer>();
 
             string sqlCommand = @"INSERT INTO TutorialAppSchema.Computer (
                 Motherboard,
@@ -39,33 +49,44 @@ namespace HelloWorld
                 + "','" + myComputer.VideoCard
                 + "' )";
 
+            // File read & write
+            File.WriteAllText("log.txt", "\n" + sqlCommand + "\n");
+
+            // Using stream writer
+            using StreamWriter openFile = new("log.txt", append: true);
+            openFile.WriteLine("\n" + sqlCommand + "\n");
+            openFile.Close();
+
+
+            Console.WriteLine(File.ReadAllText("log.txt"));
+
 
             // int result = dapper.ExecuteSqlWithRowCount(sqlCommand);
-            bool result = dapper.ExecuteSql(sqlCommand);
-            Console.WriteLine("Did the query successfully update rows? ==> {0}", result);
+            // bool result = dapper.ExecuteSql(sqlCommand);
+            // Console.WriteLine("Did the query successfully update rows? ==> {0}", result);
 
-            string sqlSelect = @"
-            SELECT
-                Computer.Motherboard,
-                Computer.HasWifi,
-                Computer.HasLTE,
-                Computer.ReleaseDate,
-                Computer.Price,
-                Computer.VideoCard
-                FROM TutorialAppSchema.Computer";
+            // string sqlSelect = @"
+            // SELECT
+            //     Computer.Motherboard,
+            //     Computer.HasWifi,
+            //     Computer.HasLTE,
+            //     Computer.ReleaseDate,
+            //     Computer.Price,
+            //     Computer.VideoCard
+            //     FROM TutorialAppSchema.Computer";
 
-            IEnumerable<Computer> computers = dapper.LoadData<Computer>(sqlSelect);
+            // IEnumerable<Computer> computers = dapper.LoadData<Computer>(sqlSelect);
 
-            foreach (Computer computer in computers)
-            {
-                Console.WriteLine("'" + computer.Motherboard
-                + "','" + computer.HasWifi
-                + "','" + computer.HasLTE
-                + "','" + computer.ReleaseDate
-                + "','" + computer.Price
-                + "','" + computer.VideoCard
-                + "' ");
-            }
+            // foreach (Computer computer in computers)
+            // {
+            //     Console.WriteLine("'" + computer.Motherboard
+            //     + "','" + computer.HasWifi
+            //     + "','" + computer.HasLTE
+            //     + "','" + computer.ReleaseDate
+            //     + "','" + computer.Price
+            //     + "','" + computer.VideoCard
+            //     + "' ");
+            // }
         }
     }
 }

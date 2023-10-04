@@ -2,6 +2,10 @@ namespace HelloWorld.Models
 {
     public class Computer
     {
+        public int ComputerId
+        {
+            get; set;
+        }
         // private string _motherboard;
         public string Motherboard
         {
@@ -11,7 +15,7 @@ namespace HelloWorld.Models
         {
             get; set;
         } = "";
-        public int CPUCore
+        public int? CPUCores
         {
             get; set;
         }
@@ -34,6 +38,10 @@ namespace HelloWorld.Models
 
         public Computer()
         {
+            if (CPUCores == null)
+            {
+                CPUCores = 0;
+            }
         }
     }
 

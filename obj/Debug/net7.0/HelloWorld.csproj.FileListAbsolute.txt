@@ -76,3 +76,10 @@
 /Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
 /Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/obj/Debug/net7.0/HelloWorld.csproj.AssemblyReference.cache
 /Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/obj/Debug/net7.0/HelloWorld.csproj.CopyComplete
+/Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/Microsoft.Extensions.Configuration.dll
+/Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/Microsoft.Extensions.Configuration.FileExtensions.dll
+/Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/Microsoft.Extensions.Configuration.Json.dll
+/Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/Microsoft.Extensions.FileProviders.Abstractions.dll
+/Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/Microsoft.Extensions.FileProviders.Physical.dll
+/Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/Microsoft.Extensions.FileSystemGlobbing.dll
+/Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/appsettings.json

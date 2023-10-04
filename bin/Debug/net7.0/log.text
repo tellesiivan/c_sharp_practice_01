@@ -1,0 +1,9 @@
+INSERT INTO TutorialAppSchema.Computer (
+                Motherboard,
+                HasWifi,
+                HasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES (
+                'ENTITY-FRAMEWORK','True','True','10/6/2023 8:46:01PM','4321.32','34sa-2sds' )

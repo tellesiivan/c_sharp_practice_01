@@ -1,0 +1,21 @@
+
+INSERT INTO TutorialAppSchema.Computer (
+                Motherboard,
+                HasWifi,
+                HasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES (
+                'dppr','False','True','10/6/2023 9:04:06PM','543.32','fdwl-2sds' )
+
+INSERT INTO TutorialAppSchema.Computer (
+                Motherboard,
+                HasWifi,
+                HasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES (
+                'dppr','False','True','10/6/2023 9:04:06PM','543.32','fdwl-2sds' )
+

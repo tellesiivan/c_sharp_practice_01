@@ -54,6 +54,14 @@
             "microsoft.entityframeworkcore.sqlserver": {
               "target": "Package",
               "version": "[7.0.11, )"
+            },
+            "microsoft.extensions.configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "microsoft.extensions.configuration.json": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [

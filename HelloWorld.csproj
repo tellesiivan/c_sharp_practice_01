@@ -1,17 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.4" />
     <PackageReference Include="microsoft.data.sqlclient" Version="5.1.1" />
     <PackageReference Include="microsoft.entityframeworkcore" Version="7.0.11" />
     <PackageReference Include="microsoft.entityframeworkcore.sqlserver" Version="7.0.11" />
+    <PackageReference Include="microsoft.extensions.configuration" Version="7.0.0" />
+    <PackageReference Include="microsoft.extensions.configuration.json" Version="7.0.0" />
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Program.cs" />
+    <Content Include=".vscode\settings.json" />
+    <Content Include="bin\Debug\net7.0\log.text" />
+    <Content Include="bin\Debug\net7.0\log.txt" />
+    <Content Include="appsettings.json" />
   </ItemGroup>
-
 </Project>
