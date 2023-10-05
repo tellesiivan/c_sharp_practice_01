@@ -7,7 +7,7 @@ INSERT INTO TutorialAppSchema.Computer (
                 Price,
                 VideoCard
             ) VALUES (
-                'dppr','False','True','10/7/2023 12:03:08PM','543.32','fdwl-2sds' )
+                'dppr','False','True','10/6/2023 9:10:31PM','543.32','fdwl-2sds' )
 
 INSERT INTO TutorialAppSchema.Computer (
                 Motherboard,
@@ -17,5 +17,5 @@ INSERT INTO TutorialAppSchema.Computer (
                 Price,
                 VideoCard
             ) VALUES (
-                'dppr','False','True','10/7/2023 12:03:08PM','543.32','fdwl-2sds' )
+                'dppr','False','True','10/6/2023 9:10:31PM','543.32','fdwl-2sds' )
 

@@ -27,7 +27,7 @@ namespace HelloWorld.Models
         {
             get; set;
         }
-        public DateTime ReleaseDate
+        public DateTime? ReleaseDate
         {
             get; set;
         }

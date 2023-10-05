@@ -83,3 +83,4 @@
 /Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/Microsoft.Extensions.FileProviders.Physical.dll
 /Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/Microsoft.Extensions.FileSystemGlobbing.dll
 /Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/appsettings.json
+/Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/bin/Debug/net7.0/Newtonsoft.Json.dll

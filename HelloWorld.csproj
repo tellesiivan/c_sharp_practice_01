@@ -21,5 +21,8 @@
     <Content Include="bin\Debug\net7.0\log.text" />
     <Content Include="bin\Debug\net7.0\log.txt" />
     <Content Include="appsettings.json" />
+    <Content Include="Data\DataContextDapper.cs" />
+    <Content Include="Computers.json" />
+    <PackageReference Include="Newtonsoft.json" Version="13.0.3" />
   </ItemGroup>
 </Project>
