@@ -6,7 +6,7 @@ namespace HelloWorld.Data
 {
     public class DataContextEF : DbContext
     {
-        private string _connectionString;
+        private readonly string _connectionString;
         public DataContextEF(IConfiguration configuration)
         {
             // _config = configuration;

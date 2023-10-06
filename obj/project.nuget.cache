@@ -1,14 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "qBi31dexAO9S87EAwpdaEge6oXndiFWw+g+1jFy+XfRwsX7bsxGwDVAUxsnSCOvUh64D0MJH+wh40Nw4gZg9ww==",
+  "dgSpecHash": "I89hz0kNBy+bc8hMKPc5xGNCydhE7j6xfIY+/cp+6aY4QHpT4owmEBvflOGvNEqzEXExXHcYO+kEMvYfgNNudw==",
   "success": true,
   "projectFilePath": "/Users/tellesivan/Desktop/c#/csharp-dotnet-course/HelloWorld/HelloWorld.csproj",
   "expectedPackageFiles": [
+    "/Users/tellesivan/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/tellesivan/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/tellesivan/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
     "/Users/tellesivan/.nuget/packages/dapper/2.1.4/dapper.2.1.4.nupkg.sha512",
     "/Users/tellesivan/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "/Users/tellesivan/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
+    "/Users/tellesivan/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/tellesivan/.nuget/packages/microsoft.data.sqlclient/5.1.1/microsoft.data.sqlclient.5.1.1.nupkg.sha512",
     "/Users/tellesivan/.nuget/packages/microsoft.data.sqlclient.sni.runtime/5.1.0/microsoft.data.sqlclient.sni.runtime.5.1.0.nupkg.sha512",
     "/Users/tellesivan/.nuget/packages/microsoft.entityframeworkcore/7.0.11/microsoft.entityframeworkcore.7.0.11.nupkg.sha512",

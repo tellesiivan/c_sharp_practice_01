@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.Json;
+using AutoMapper;
 using HelloWorld.Data;
 using HelloWorld.Models;
 using Microsoft.Extensions.Configuration;
@@ -20,9 +21,11 @@ namespace HelloWorld
             DataContextDapper dapper = new(configuration);
             DataContextEF EntityFW = new(configuration);
 
-
+            // ========
             // JSON Section --> Parse data and match to models <-- JSON Section
-            string computersJson = File.ReadAllText("Computers.json");
+            // ========
+
+            string snakeCaseComputersJson = File.ReadAllText("Computers.json");
             // IEnumerable --> Use when we dont need to add after it has been created
             // List --> We can add after reading from it
 
@@ -34,7 +37,7 @@ namespace HelloWorld
             };
 
             // make optional since it can return a null value
-            IEnumerable<Computer>? Systemcomputers = SystemJsonSerializer.Deserialize<IEnumerable<Computer>>(computersJson, options);
+            IEnumerable<Computer>? Systemcomputers = SystemJsonSerializer.Deserialize<IEnumerable<Computer>>(snakeCaseComputersJson, options);
 
             string serialzedComputersSystemCopy = SystemJsonSerializer.Serialize(Systemcomputers, options);
             File.WriteAllText("computersCopySystem.txt", serialzedComputersSystemCopy);
@@ -46,7 +49,7 @@ namespace HelloWorld
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
 
-            IEnumerable<Computer>? computers = JsonConvert.DeserializeObject<IEnumerable<Computer>>(computersJson);
+            IEnumerable<Computer>? computers = JsonConvert.DeserializeObject<IEnumerable<Computer>>(snakeCaseComputersJson);
 
             if (computers != null)
             {
@@ -68,12 +71,46 @@ namespace HelloWorld
                         + "','" + EscapeSingleQuote(computer.VideoCard)
                         + "' )";
 
-                    dapper.ExecuteSql(sqlCommand);
+                    // dapper.ExecuteSql(sqlCommand);
                 }
             }
 
             string serialzedComputersCopy = JsonConvert.SerializeObject(computers, jsonSerializerSettings);
+
             File.WriteAllText("computersCopyNewtonsoft.txt", serialzedComputersCopy);
+
+            IEnumerable<Computer>? computersFromSnakeCaseComputersJson = SystemJsonSerializer.Deserialize<IEnumerable<Computer>>(snakeCaseComputersJson);
+
+
+            if (computersFromSnakeCaseComputersJson != null)
+            {
+                Console.WriteLine("USING JsonPropertyName ==> {0}", computersFromSnakeCaseComputersJson.Count());
+
+            }
+
+            // ===== Model Mapper Section =====
+
+            Mapper mapper = new(new MapperConfiguration((config) =>
+            {
+                config.CreateMap<ComputerSnake, Computer>()
+                    .ForMember(destinationMember => destinationMember.ComputerId, options => options.MapFrom(sourceMember => sourceMember.computer_id))
+                    .ForMember(destinationMember => destinationMember.VideoCard, options => options.MapFrom(sourceMember => sourceMember.video_card))
+                    .ForMember(destinationMember => destinationMember.Price, options => options.MapFrom(sourceMember => sourceMember.price))
+                    .ForMember(destinationMember => destinationMember.HasWifi, options => options.MapFrom(sourceMember => sourceMember.has_wifi))
+                    .ForMember(destinationMember => destinationMember.CPUCores, options => options.MapFrom(sourceMember => sourceMember.cpu_cores))
+                    .ForMember(destinationMember => destinationMember.Motherboard, options => options.MapFrom(sourceMember => sourceMember.motherboard))
+                    .ForMember(destinationMember => destinationMember.ReleaseDate, options => options.MapFrom(sourceMember => sourceMember.release_date))
+                    .ForMember(destinationMember => destinationMember.HasLTE, options => options.MapFrom(sourceMember => sourceMember.has_lte))
+                ;
+            }));
+            IEnumerable<ComputerSnake>? computerSystem = SystemJsonSerializer.Deserialize<IEnumerable<ComputerSnake>>(serialzedComputersSystemCopy);
+
+            if (computerSystem != null)
+            {
+                IEnumerable<Computer> computerResult = mapper.Map<IEnumerable<Computer>>(computerSystem);
+                Console.WriteLine("WITH MAPPER {0}", computerResult.Count());
+            }
+
 
             // Entity framework -> Will execute the same as the sqlCommand below and dapper.ExecuteSql(sqlCommand);
             // EntityFW.Add(myComputer);
@@ -100,7 +137,7 @@ namespace HelloWorld
             // File read & write
             // File.WriteAllText("log.txt", "\n" + sqlCommand + "\n");
 
-            // // Using stream writer
+            // Using stream writer
             // using StreamWriter openFile = new("log.txt", append: true);
             // openFile.WriteLine("\n" + sqlCommand + "\n");
             // openFile.Close();
